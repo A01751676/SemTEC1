@@ -3,6 +3,7 @@
 Equipo 1
     Ana Patricia Islas Mainou A01751676
     Luis Humberto Romero Pérez A01752789
+    Rodrigo Mejía Jiménez A01752789
 """
 
 
@@ -10,7 +11,7 @@ Equipo 1
 
 Exercises
 
-1. Add a color.
+1. Add a color. (Amarillo)
 2. Complete circle.
 3. Complete rectangle.
 4. Complete triangle.
@@ -127,7 +128,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
-onkey(lambda: color('yellow'), 'Y')
+onkey(lambda: color('yellow'), 'Y') 
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
