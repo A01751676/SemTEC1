@@ -64,13 +64,27 @@ def move():
 
     square(food.x, food.y, 9, 'green')
     update()
-    ontimer(move, 100)
+    
+    ontimer(move, speed) # cambia vel 
+    
+def store(key, value):
+    "Store value in state at key."
+    state[key] = value
 
+speed = input ("Escribe la velocidad de juego a = alta, m = media, b = baja:     ")
 
+if speed == "a":
+    speed = 80
+elif speed == "m":
+    speed = 100
+else:
+    speed = 150
+    
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
 listen()
+onkey(lambda: store('speed', speed), 'l')
 onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
