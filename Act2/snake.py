@@ -37,13 +37,42 @@ def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
 
+def movercomida(x, y):
+
+    global food
+    x=(x//10)*10
+    y=(y//10)*10
+    food=vector(x,y)
+    
+
 
 def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
 
-    if not inside(head) or head in snake:
+    if not inside(head):
+        
+        if aim.x==0 and aim.y==10:
+            change(-10,0)
+            
+            
+        elif aim.x==0 and aim.y==-10:
+            change(10,0)
+        elif aim.x==10 and aim.y==0:
+            change(0,10)
+        elif aim.x==-10 and aim.y==0:
+            change(0,-10)
+            
+            
+        
+        
+        update()
+        
+       
+    
+    elif head in snake:
+        
         square(head.x, head.y, 9, 'red')
         update()
         return
@@ -64,12 +93,13 @@ def move():
 
     square(food.x, food.y, 9, 'green')
     update()
-    ontimer(move, 100)
+    ontimer(move, 100) #cambio de velocidad
 
 
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
+onscreenclick(movercomida)
 listen()
 onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
