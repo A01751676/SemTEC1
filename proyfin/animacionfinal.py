@@ -22,11 +22,21 @@ barco = pygame.transform.scale(barco, (150, 150))
 ganso = pygame.image.load("ganso.png")
 ganso = pygame.transform.scale(ganso, (75, 75))
 
+<<<<<<< HEAD
 pantalla.blit(granjero,(5,300))
 pantalla.blit(zorro,(5,230))
 pantalla.blit(maiz,(5,50))
 pantalla.blit(ganso,(5,150))
 pantalla.blit(barco,(100,350))
+=======
+# 
+def mov(img, vel, pos):
+    pantalla.blit(fondo,(0,0))
+    pantallas.blit(granjero, (0,pos + vel))
+    
+
+pantalla.blit(maiz,(5,10))
+>>>>>>> 4bd6679c6305e646289fd93bf9bed617303028da
 #Bucle para solo cerrar la ventana al presionar el boton de cerrar
 while True:
   for event in pygame.event.get():
