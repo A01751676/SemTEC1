@@ -24,15 +24,20 @@ def redrawGameWindow(Dir, p1, p2):
             
     win.blit(rio,(0,0))
     ypos = 300
+    
+    #Mostrar imagenes para el lado A
     for item in Side_A:
         win.blit(item,(5,ypos))
         ypos = ypos - 60
 
     ypos = 300
+    
+    #Mostrar imagenes para el lado B
     for item in Side_B:
         win.blit(item,(450,ypos))
         ypos = ypos - 60
-
+    #Compara la dirección del bote para insertar la imagen del granjero y el
+    #acompañante si es que hay
     if p1 != 'Unknown':
         if right:
             win.blit(botederecha,(x,y))
@@ -63,14 +68,16 @@ def get_characters(d, p1, p2):
 
     Returns
     -------
-    d : NONE
-        No disponible.
-    farmer : pygame object
+    d : string
+        Dirección del movimiento de las imagenes en ese momento.
+    granjero : pygame object
         la imagen del granjero.
     character : pygame object
         Imagen del personaje requerido.
 
     """
+    #asigna a la variable character,la imagen adecuada de acuerdo a lo que
+    #reciba de la lista
     if p2 == 'Zorro':
         character = zorro
     elif p2 == 'Maiz':
@@ -123,6 +130,7 @@ def Disembark_characters(A, p1, p2):
     None.
 
     """
+    #Si el personaje seleccionado no se encuentra en la lista A, se agrega a la lista.
     if p1 not in A:
         A.append(p1)
     if p2 not in A:
@@ -150,6 +158,8 @@ def HCR_animacion(P):
     clock = pygame.time.Clock()
     run = True
     move = 0
+    #ejecuta la animación hasta tener a todos los personajes del otro lado
+    #del río
     while run:
         clock.tick(27)
         
@@ -157,6 +167,8 @@ def HCR_animacion(P):
             if event.type == pygame.QUIT:
                 run = False
         keys = pygame.key.get_pressed()
+        #Si se oprime la tecla a la izquierda, realizará los movimientos de 
+        #personaje adecuados
         if keys[pygame.K_LEFT]:
             left = True
             right = False
@@ -169,7 +181,9 @@ def HCR_animacion(P):
                     pygame.time.delay(70)
                 move += 3
                 Disembark_characters(Side_A, p1, p2)
-
+        
+        #Si se oprime la tecla a la derecha, realizará los movimientos de 
+        #personaje adecuados
         elif keys[pygame.K_RIGHT]:
             right = True
             left = False
@@ -182,6 +196,7 @@ def HCR_animacion(P):
                     pygame.time.delay(70)
                 move += 3
                 Disembark_characters(Side_B, p1, p2)
+        #coloca las imagenes de manera estatica esperando a la siguiente acción
         else:
             redrawGameWindow ('Standby','Unknown', 'Unknown')
         
@@ -200,8 +215,9 @@ def Busca_solucion():
 
     """
     P = HCRfinal.HCR()
+    #revisa que el tamaño de la lista P sea menor a 22, lo que significaría 
+    #que la solución obtenida es la mejor
     while len(P) > 22:
-    #while len(P) > 42:
         HCRfinal.reiniciar_sistema()
         print ('\nBuscando una mejor solución, Longitud del Path', len(P))
         P = HCRfinal.HCR()
@@ -216,17 +232,16 @@ P = Busca_solucion()
 print ('Aquí su animación')
 
 pygame.init()
-
+#creación de la ventana y modificación del nombre de la ventana
 win = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Como cruzar un rio")
-
+#asignación de las imagenes a las variables y ajuste de su tamaño
 rio = pygame.image.load('rio.png')
 rio = pygame.transform.scale(rio, (600, 600))
 botederecha = pygame.image.load('botederecha.png')
 botederecha = pygame.transform.scale(botederecha, (150, 150))
 boteizquierda = pygame.image.load('boteizquierda.png')
 boteizquierda = pygame.transform.scale(boteizquierda, (150, 150))
-#char = pygame.image.load('BoteRight.png')
 zorro = pygame.image.load('zorro.png')
 zorro = pygame.transform.scale(zorro, (75, 75))
 maiz = pygame.image.load('maiz.png')
