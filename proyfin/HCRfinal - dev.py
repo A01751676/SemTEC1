@@ -1,6 +1,7 @@
 
 import random
 
+
 Lado_A = ['Granjero', 'Zorro', 'Ganzo', 'Maiz']
 Lado_B = []
 Path = []
