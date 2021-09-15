@@ -93,9 +93,17 @@ def move():
 
     square(food.x, food.y, 9, 'green')
     update()
-    ontimer(move, 100) #cambio de velocidad
+    ontimer(move, speed) # cambia vel 
 
+speed = input ("Escribe la velocidad de juego a = alta, m = media, b = baja:     ")
 
+if speed == "a":
+    speed = 80
+elif speed == "m":
+    speed = 100
+else:
+    speed = 150
+    
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
