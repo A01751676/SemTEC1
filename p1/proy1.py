@@ -3,7 +3,7 @@
 Equipo 1
     Ana Patricia Islas Mainou A01751676
     Luis Humberto Romero Pérez A01752789
-    Rodrigo Mejía Jiménez A01752789
+    Rodrigo Mejía Jiménez A01752113
 """
 import matplotlib.pyplot as plt
 import numpy as np
