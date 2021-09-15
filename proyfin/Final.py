@@ -3,6 +3,23 @@ import HCRfinal
 import pygame
 
 def redrawGameWindow(Dir, p1, p2):
+    """
+    Redibuja la pestaña cada que se mueve una imagen para conservar el fondo 
+
+    Parameters
+    ----------
+    Dir : string
+        representa la dirección del movimiento o las acciones de la imagen.
+    p1 : string
+        personaje a colocar.
+    p2 : string
+        personaje a colocar.
+
+    Returns
+    -------
+    None.
+
+    """
     global x, y, Side_A, Side_B
             
     win.blit(bg,(0,0))
@@ -32,6 +49,28 @@ def redrawGameWindow(Dir, p1, p2):
     pygame.display.update()
 
 def get_characters(d, p1, p2):
+    """
+    Asigna una imagen a cada uno de los personajes de la lista
+
+    Parameters
+    ----------
+    d : string
+        Dirección del movimiento de las imagenes en ese momento.
+    p1 : string
+        Un personaje a colocar.
+    p2 : string
+        Dirección del movimiento de las imagenes en ese momento..
+
+    Returns
+    -------
+    d : NONE
+        No disponible.
+    farmer : pygame object
+        la imagen del granjero.
+    character : pygame object
+        Imagen del personaje requerido.
+
+    """
     if p2 == 'Zorro':
         character = fox
     elif p2 == 'Maiz':
@@ -43,18 +82,68 @@ def get_characters(d, p1, p2):
     return (d, farmer, character)
 
 def Embark_characters(B, p1, p2):
+    """
+    Borra los personajes de una lista simulando que suben al bote
+
+    Parameters
+    ----------
+    B : list
+        Lista con los personajes de un lado del río.
+    p1 : string
+        personaje.
+    p2 : string
+        personaje.
+
+    Returns
+    -------
+    None.
+
+    """
+    #Si el personaje seleccionado se encuentra en la lista B, se borra de la lista.
     if p1 in B:
         B.remove(p1)     
     if p2 in B:
         B.remove(p2)
  
 def Disembark_characters(A, p1, p2):
+    """
+    Agrega los personajes a la lista A, simulando que bajan del bote
+
+    Parameters
+    ----------
+    A : list
+        lista con los personajes del otro lado del río.
+    p1 : string
+        personaje.
+    p2 : list
+        personaje.
+
+    Returns
+    -------
+    None.
+
+    """
     if p1 not in A:
         A.append(p1)
     if p2 not in A:
         A.append(p2)
     
 def HCR_animacion(P):
+    """
+    Función que ejecuta toda la animación, tanto el movimiento de los personajes,
+    como el bote. Esto lo realiza llamando a las demás funciones para poder 
+    ejecutarse
+
+    Parameters
+    ----------
+    P : list
+        lista con la solución a animar.
+
+    Returns
+    -------
+    None.
+
+    """
     global x, y, left, right, vel
     global Side_A, Side_B
 
@@ -100,6 +189,16 @@ def HCR_animacion(P):
     pygame.quit()
 
 def Busca_solucion():
+    """
+    Se manda a llamar la funcion HCR que genera una solución al problema, si
+    esta solución es la mejor la regresa, sino genera otra solución
+
+    Returns
+    -------
+    P : list
+        Lista con la solución obtenida.
+
+    """
     P = HCRfinal.HCR()
     while len(P) > 22:
     #while len(P) > 42:
