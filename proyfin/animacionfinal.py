@@ -17,6 +17,12 @@ maiz = pygame.image.load("maiz.png")
 barco = pygame.image.load("bote.png")
 ganso = pygame.image.load("ganso.png")
 
+# 
+def mov(img, vel, pos):
+    pantalla.blit(fondo,(0,0))
+    pantallas.blit(granjero, (0,pos + vel))
+    
+
 pantalla.blit(maiz,(5,10))
 #Bucle para solo cerrar la ventana al presionar el boton de cerrar
 while True:
