@@ -81,7 +81,8 @@ def move():
 
     for target in targets:
         if not inside(target):
-            return
+            #juego infinito
+            target = vector(200,target.y)
 
     ontimer(move, 50)
 
