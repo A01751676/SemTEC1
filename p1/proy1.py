@@ -9,6 +9,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def obtenerdatos():
+    """
+    Lee el archivo .txt
+
+    Returns
+    -------
+    contenido : list
+        lista de todas las palabras del documento en mayuscula.
+
+    """
     archivo = open("GEH.txt", "r")
     contenido = ""
     
@@ -28,6 +37,22 @@ def obtenerdatos():
         
 
 def conteo(contenido):
+    """
+    Cuenta las palabras repetidas dentro de una lista
+
+    Parameters
+    ----------
+    contenido : list
+        lista con las palabras que se quieren contar.
+
+    Returns
+    -------
+    palabras : list
+        palabras unicas encontradas.
+    repeticion : TYPE
+        frecuencia de repeticion de las palabras.
+
+    """
     palabras = list(set(contenido))
     repeticion =[]
     
@@ -39,6 +64,21 @@ def conteo(contenido):
 
 #Funcion para crear las graficas
 def histograma(palabras,repeticion):
+    """
+    Genera histogramas para la repeticion
+
+    Parameters
+    ----------
+    palabras : list
+        palabras unicas encontradas.
+    repeticion : list
+        frecuencia de repeticion de las palabras.
+
+    Returns
+    -------
+    None.
+
+    """
     #Histograma
     plt.hist(repeticion,color = (0.5,0.1,0.5,0.8))
     plt.title("Histograma de repetición de palabras")
@@ -55,7 +95,15 @@ def histograma(palabras,repeticion):
     plt.show()
     return 
     
-def main():   
+def main(): 
+    """
+    Programa principal main
+
+    Returns
+    -------
+    None.
+
+    """
     palabras, repeticion = conteo(obtenerdatos())
     histograma(palabras,repeticion)
     
